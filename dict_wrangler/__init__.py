@@ -1,15 +1,16 @@
 import module_mgr as mm
 import dict_wrangler as dw
 
-modules_folder = None
+module_manager = mm.Manager()
+modules_folders = None
 
 
 def load_modules():
-    mm.register_paths([modules_folder])
-    registered_paths = mm.registered_paths()
-    mm.add_folders_to_pythonpath(registered_paths)
-    modules_discovered = mm.discover_modules()
-    modules_loaded = mm.load_modules(modules_discovered)
+    module_manager.register_paths([modules_folders])
+    registered_paths = module_manager.registered_paths()
+    module_manager.add_folders_to_pythonpath(registered_paths)
+    modules_discovered = module_manager.discover_modules()
+    modules_loaded = module_manager.load_modules(modules_discovered)
     return modules_loaded
 
 
