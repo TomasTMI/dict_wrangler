@@ -6,22 +6,13 @@ Get custom objects from a Python dictionary
 import txt_wrangler as tw
 import dict_wrangler as dw
 import os
-import json
 
-# Defines path to the main file to analyse as well as the modules path
+# Defines path to the modules to be used
 os.chdir(__file__.rpartition(os.sep)[0])
-main_file = r"main.txt"
-tw.modules_folders = r'.\txt_wrangler\modules'
-dw.modules_folders = r'.\dict_wrangler\modules'
+dw.modules_folders = r'.\modules'
 
-print tw.modules_folders
-print dw.modules_folders
-
-# Reads the file using text_wrangler
-contents_dictionary = tw.read_file(main_file)
-print contents_dictionary
-print json.dumps(contents_dictionary, indent=4)
+data = {'type': 'file', 'value': [{'type': 'block', 'value': [{'type': 'name', 'value': '1FirstBlock'}, {'type': 'legs', 'value': 3}, {'type': 'comment', 'value': 'Comment in block'}, {'type': 'author', 'value': 'David Martinez'}]}, {'type': 'file', 'value': [{'type': 'block', 'value': [{'type': 'name', 'value': '2FirstBlock'}, {'type': 'legs', 'value': 8}, {'type': 'author', 'value': 'Mr. Brown'}]}, {'type': 'comment', 'value': 'Comment between blocks (in file)'}, {'type': 'block', 'value': [{'type': 'name', 'value': '2SecondBlock'}, {'type': 'legs', 'value': 13}, {'type': 'author', 'value': 'Mr. Lewis'}]}, {'type': 'file', 'value': [{'type': 'block', 'value': [{'type': 'name', 'value': '3FirstBlock'}, {'type': 'legs', 'value': 8}, {'type': 'author', 'value': 'Shakespeare'}]}, {'type': 'block', 'value': [{'type': 'name', 'value': '3SecondBlock'}, {'type': 'legs', 'value': 13}, {'type': 'author', 'value': 'Mr .Rilett'}]}, {'type': 'block', 'value': [{'type': 'name', 'value': '3ThirdBlock'}, {'type': 'legs', 'value': 22}, {'type': 'comment', 'value': 'Comment in block (in file)'}, {'type': 'author', 'value': 'Holden'}]}], 'file': '.\\data\\3rd.txt'}, {'type': 'block', 'value': [{'type': 'name', 'value': '2ThirdBlock'}, {'type': 'legs', 'value': 22}, {'type': 'author', 'value': 'Martin'}]}], 'file': '.\\data\\2nd.txt'}, {'type': 'block', 'value': [{'type': 'name', 'value': '1SecondBlock'}, {'type': 'legs', 'value': 23}, {'type': 'author', 'value': 'John Smith'}]}, {'type': 'comment', 'value': 'Comment between blocks'}, {'type': 'block', 'value': [{'type': 'name', 'value': '1ThirdBlock'}, {'type': 'legs', 'value': 2}, {'type': 'author', 'value': 'Tony Stark'}]}], 'file': '.\\data\\main.txt'}
 
 # Get objects from dictionary using dict_wrangler
-objects_from_dict = dw.read_dict(contents_dictionary)
+objects_from_dict = dw.read_dict(data)
 print objects_from_dict
