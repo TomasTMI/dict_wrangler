@@ -15,3 +15,11 @@ data = {'type': 'file', 'value': [{'type': 'block', 'value': [{'type': 'name', '
 
 # Get objects from dictionary using dict_wrangler
 objects_from_dict = dw.read_dict(data)
+
+for object in objects_from_dict:
+    if object:
+        try:
+            print object
+        except:
+            pass
+        print "  ", object.parent.name

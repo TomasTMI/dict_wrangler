@@ -1,9 +1,15 @@
 import module_mgr as mm
 import dict_wrangler as dw
+import objects as obj
 
 module_manager = mm.Manager()
 modules_folders = None
 
+
+# Objeto principal de la que van a derivar otros objectos (Basicamente para no
+# tener que definir la funcionalidad de padre e hijo una y otra vez).
+# Posiblemente quieras definir este en otro fichero para poder llamarlo desde
+# todos los modulos a la hora de crear los diferentes objetos.
 
 def load_modules():
     module_manager.register_paths([modules_folders])
@@ -14,15 +20,16 @@ def load_modules():
     return modules_loaded
 
 
-def read_dict(dictionary=None):
-    assert isinstance(dictionary, dict), "Not a dictionary"
+def read_dict(dictionary=None, results=list(), objecte=None):
+    if not objecte:
+        objecte = obj.RootObj()
 
-    results = list()
+    assert isinstance(dictionary, dict), "Not a dictionary"
 
     modules = dw.load_modules()
     for module in modules:
         try:
-            module.main(dictionary, results)
+            module.main(dictionary, results, objecte)
 
         except Exception, e:
             print "An exception has ocurred:", e
