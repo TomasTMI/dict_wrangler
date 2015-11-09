@@ -1,5 +1,6 @@
 import module_mgr as mm
 import dict_wrangler as dw
+import objects as obj
 
 module_manager = mm.Manager()
 modules_folders = None
@@ -9,18 +10,6 @@ modules_folders = None
 # tener que definir la funcionalidad de padre e hijo una y otra vez).
 # Posiblemente quieras definir este en otro fichero para poder llamarlo desde
 # todos los modulos a la hora de crear los diferentes objetos.
-
-class SuperObj():
-    def __init__(self):
-        # Definimos los atributos de padre e hijos
-        self.parent = None                      # Valor vacio
-        self.children = list()                  # Lista vacia
-
-    def setParent(self, parent):
-        # Funcion a la que llamaremos para definir el padre de un elemento
-        self.parent = parent                # Da valor para parent
-        parent.children.append(self)        # Se anhade a la lista de hijos
-
 
 def load_modules():
     module_manager.register_paths([modules_folders])
@@ -32,6 +21,9 @@ def load_modules():
 
 
 def read_dict(dictionary=None, results=list(), objecte=None):
+    if not objecte:
+        objecte = obj.RootObj()
+
     assert isinstance(dictionary, dict), "Not a dictionary"
 
     modules = dw.load_modules()
