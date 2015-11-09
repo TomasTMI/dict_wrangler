@@ -3,7 +3,6 @@ Usage example for dict_wrangler.
 
 Get custom objects from a Python dictionary
 '''
-import txt_wrangler as tw
 import dict_wrangler as dw
 import os
 
@@ -15,4 +14,5 @@ data = {'type': 'file', 'value': [{'type': 'block', 'value': [{'type': 'name', '
 
 # Get objects from dictionary using dict_wrangler
 objects_from_dict = dw.read_dict(data)
-print objects_from_dict
+for object in objects_from_dict:
+    print object
