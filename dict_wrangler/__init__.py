@@ -1,3 +1,4 @@
+# DICT_WRANGLER
 import module_mgr as mm
 import dict_wrangler as dw
 import objects as obj
@@ -5,11 +6,6 @@ import objects as obj
 module_manager = mm.Manager()
 modules_folders = None
 
-
-# Objeto principal de la que van a derivar otros objectos (Basicamente para no
-# tener que definir la funcionalidad de padre e hijo una y otra vez).
-# Posiblemente quieras definir este en otro fichero para poder llamarlo desde
-# todos los modulos a la hora de crear los diferentes objetos.
 
 def load_modules():
     module_manager.register_paths([modules_folders])

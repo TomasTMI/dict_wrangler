@@ -18,8 +18,8 @@ objects_from_dict = dw.read_dict(data)
 
 for object in objects_from_dict:
     if object:
+        print "(", object.parent.name, ") ... ",
         try:
             print object
         except:
             pass
-        print "  ", object.parent.name

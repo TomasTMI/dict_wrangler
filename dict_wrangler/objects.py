@@ -1,6 +1,8 @@
+# Global structure of OBJECTS for Dict_Wrangler
+
 class SuperObj(object):
     def __init__(self):
-        # Definimos los atributos de padre e hijos
+        # Attributes: father, children, ...
         self.parent = None                      # Valor vacio
         self.children = list()                  # Lista vacia
 
@@ -13,7 +15,7 @@ class SuperObj(object):
 class RootObj(SuperObj):
     def __init__(self):
         super(RootObj, self).__init__()
-        self.name = None
+        self.name = "ROOT"
 
     def __repr__(self):
         return "ROOT"
