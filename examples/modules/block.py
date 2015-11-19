@@ -9,7 +9,6 @@ class BlockObj(obj.SuperObj):
     def __init__(self):
         # Attributes: father, children, ...
         super(BlockObj, self).__init__()
-        self.name = 'Bloque'
 
     def __repr__(self):
         return "block"
