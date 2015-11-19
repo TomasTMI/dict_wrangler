@@ -5,7 +5,7 @@ import objects as obj
 
 module_manager = mm.Manager()
 modules_folders = None
-
+html_dir = None
 
 def load_modules():
     module_manager.register_paths([modules_folders])
