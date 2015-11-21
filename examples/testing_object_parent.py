@@ -17,9 +17,15 @@ data = {'type': 'file', 'value': [{'type': 'block', 'value': [{'type': 'name', '
 objects_from_dict = dw.read_dict(data)
 
 for object in objects_from_dict:
-    if object:
+    if object.parent.__repr__() == 'ROOT':
+        print "( ROOT ) ... ",
+    if object.parent.__repr__() == 'block':
+        print "( Block ) ... ", object.__repr__(),
+    elif object.parent.__repr__() == 'file':
         print "(", object.parent.name, ") ... ",
-        try:
-            print object
-        except:
-            pass
+    if object.__repr__() == 'file':
+        print object.name
+    elif object.__repr__() == 'block':
+        print "Block"
+    else:
+        print object.value
